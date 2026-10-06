@@ -272,9 +272,9 @@ This band, against this key, is the student's own training loss, so the gain say
 > **Placeholder. Results pending, reported as pre-registered.**
 > A second student recipe was pre-registered after v1's result, and it is training as I write. Its design, the hash of its pre-registration and every gate result will be added here exactly as pre-registered, whatever they show. Nothing in sections A to C will change. The scripts [`code/student2-*.py`](code/) are its harness, still in progress.
 >
-> - v2 design summary: [to fill from the frozen v2 pre-registration]
-> - v2 pre-registration sha256: [to fill]
-> - v2 results, gates G1 to G6: [to fill]
+> - v2 design summary: pending: the v2 pre-registration is frozen and will be published with its results in an update to this repository
+> - v2 pre-registration sha256: pending (published with the results)
+> - v2 results, gates G1 to G6: pending (training in progress at submission time)
 
 ## E. Registration and render checks (PHerc0841)
 
