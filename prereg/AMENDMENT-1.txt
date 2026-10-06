@@ -1,0 +1,55 @@
+AMENDMENT 1 to the day-1 prereg, written 2026-10-05 14:03:43, BEFORE prereg.json exists and before any recipe ran on 252405.
+Source: a reviewing assistant session (keyshift.py, tileshift.py, band.py: unpublished scratch scripts), checked against
+baselines/check-score.txt.
+1. SELECTION on w00big: primary = AUCsup (negatives restricted to supervised pixels) against ScrollPrize's human w00
+   labels. Tie-break within 0.01 AUCsup: hp r at sigma 192 um (not 48 um) against the SP 2.4 um map, blur 2.
+   Why: at 48 um, SP vs our Hecate 2.4 map has hp r 0.06 although raw r is 0.82; no global or per-tile shift explains
+   it, so the 48 um band is mostly each model's own texture. Bands (sp~h24 / s43~sp, blur 0): 48 um 0.06/0.04,
+   96 um 0.19/0.12, 192 um 0.41/0.24, 384 um 0.62/0.35; model-free render about 0 at every sigma.
+2. 252405 GATE: AUCsup >= 0.85 AND hp r at 192 um above the rolled-null max AND forward order and depth-shuffled
+   controls inside their nulls -> letter read. 0.80-0.85 ambiguous, read anyway. < 0.80 existing readers exhausted.
+3. STUDENT BRANCH GO (if it runs): not "2.0x the public checkpoint on the SP key" (a perfect copy of a Hecate 2.4
+   teacher reaches only 1.56-1.81x at any sigma), but: student hp r >= 0.6 of its own teacher's hp r on the same key
+   and blur, and student AUCsup within 0.05 of the teacher's; scramble arm flat. Frozen before any student is scored.
+4. Provenance (gates/provenance-run.txt) is provisional: the (b) verdict rests on b1+b3; the normal-shift null in the
+   comments was never computed; "cell by cell" is a KD-tree point-to-plane; the 10 um original-vs-normalized figure is
+   untested against plane-fit sag; the label meta's 4.681 um radix is 1203's and 846A's, 0841's is 4.683 (unresolved).
+
+AMENDMENT 2, written 2026-10-05 14:13:18, still before any recipe ran on 252405 (the reviewer's score-48.txt / score-192.txt from the
+current day1-score-baselines.py on baselines/maps, SP key, blur 2):
+5. STUDENT GO replaces item 3: GAP CLOSURE against the STRONGEST on-disk recipe, never one checkpoint.
+   closure = (student - best_baseline) / (teacher - best_baseline), on the same key, same blur, at 192 um.
+   GO needs closure >= 0.5 on hp r (192 um) AND closure >= 0.5 on AUCsup, scramble arm flat, letter read blind.
+   48 um can anchor no gate: there the 2-soup ensemble BEATS the 2.4 um teacher (b2 0.101 vs 0.092), a
+   denominator below zero. At 192 um the teacher leads (0.420 vs ENS 0.319, b2).
+6. SELECTION stands as item 1, and it will pick the 2-soup rank-mean ensemble (top hp r at 192 um, AUCsup 0.790).
+   Neither metric sees the letter softening ensembling caused in ckpt-ens (edges -19 to -25%). So the frozen
+   best-single-member arm is mandatory, both arms run on 252405, and the BLIND LETTER READ is the decider,
+   with AUC/hp as gates only.
+7. At 192 um the rolled-key nulls are wide (max 0.06-0.19): "above the null max" is binding, not decoration.
+
+AMENDMENT 3, written 2026-10-05 14:14:27, before any student exists or any recipe ran on 252405 (the reviewer's foldgap.py, 192 um, SP key,
+b2, teacher h24, baseline 2-soup ENS): the teacher-baseline gap is region-dependent, 0.010-0.226 across w00
+quadrants of ~1.5 cm2 (full frame 0.101), against a 192 um null sd of ~0.04. So, extending item 5:
+8. Before any student is scored, score the teacher and the best baseline on 252405's claim region. The hp
+   gap-closure test is INFORMATIVE only if teacher - baseline >= 2x the rolled-null sd on that region; otherwise
+   it is declared UNINFORMATIVE there (neither pass nor fail) and GO rests on AUCsup closure plus the blind read.
+9. A pass also needs (student - baseline) to clear a paired tile-bootstrap 95% interval on the same pixels
+   (tiles >= 1 mm, >= 1000 resamples), for hp r and for AUCsup.
+
+AMENDMENT 4, written 2026-10-05 14:15:39 (the reviewer's tileboot.py, 192 um, SP key, b2, 1000 resamples):
+10. Item 9's bootstrap tiles are >= 2 mm, not >= 1 mm: the 95% CI width still grows from 1 to 2 mm (ENS - s43_50k
+    0.134 -> 0.159; soup42 - s43_50k 0.169 -> 0.214), so residuals correlate past 1 mm and 1 mm tiles understate
+    the noise. A 4 cm2 region gives about 100 such tiles.
+11. Correction to the Amendment 3 context: the w00big hp core at 192 um is 0.57 cm2, so its quadrants are ~0.14 cm2,
+    not ~1.5 cm2. The 0.010-0.226 gap spread is a small-scale figure; item 8's gate stays as a guard, not as a claim
+    that a 4 cm2 region is unstable. Estimated CI on 4 cm2 at 2 mm tiles: about +/-0.03 (scaled, not measured).
+
+AMENDMENT 5, written 2026-10-05 14:16:43: the exact inequality behind items 5 and 9, for hp r (192 um) and for AUCsup each:
+12. Resample teacher, baseline and student TOGETHER on the same 2 mm tiles (>= 1000 resamples, fixed seed) and
+    compute closure = (student - baseline) / (teacher - baseline) per resample. PASS needs BOTH
+      point closure >= 0.5   AND   2.5th percentile of the resampled closure >= 0.25.
+    (Not merely "student - baseline > 0 at the 2.5% bound", which lets a closure CI of 0.2-0.8 through.)
+    Item 8 keeps the denominator away from 0; if it is UNINFORMATIVE there, the hp half is not tested.
+13. Noted, not a risk: if Hecate 2.4 or the canonical model saw 252405's labels, the teacher is inflated, the
+    denominator grows, and GO gets harder, never easier.

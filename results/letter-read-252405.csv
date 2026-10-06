@@ -1,0 +1,5 @@
+pool,map,role,reference_letters,real_tiles,phase_null_tiles,depth_null_tiles,matched,matched_via_listed_alternative,matched_of_4_clear,matched_of_4_probable,real_calls_merged,real_calls_raw,precision,phase_null_calls,phase_null_tiles_with_calls,depth_null_calls,depth_null_tiles_with_calls,net,located,located_box,tau040_matched,tau040_null_calls,median_confidence_real_calls,median_confidence_phase_null_calls,verdict_a_matched_ge_6,verdict_b_nulls_le_24_each,verdict_c_precision_ge_0_11,verdict_go
+pd,ScrollPrize 2.4 um map,ceiling (never judged GO),8,25,25,0,6,0,4,2,27,36,0.2222,16,9,,,-10,8,8,6,0,0.4,0.21,,,,
+pe,TAUIL ft6k (frozen recipe),arm A (decides),8,25,25,25,3,1,2,1,15,17,0.2,4,4,1,1,-2,3,7,0,0,0.3,0.25,False,True,True,False
+pf,ink_9um released s43-75k,baseline (comparison only),8,25,25,0,0,0,0,0,10,13,0.0,1,1,,,-1,0,2,0,0,0.25,0.3,False,True,False,False
+pg,student v1 (TAUIL ft6k fine-tuned on same-scroll 2.4 um maps),student G6 (report-only),8,25,25,25,3,0,1,2,20,25,0.15,27,17,9,6,-33,4,6,1,3,0.3,0.3,False,False,True,False

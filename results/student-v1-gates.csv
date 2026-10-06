@@ -1,0 +1,9 @@
+gate,rule (pre-registered),result,numbers
+G1,AUCsup gap closure: point >= 0.5 and bootstrap 2.5th percentile >= 0.25,FAIL,"closure 0.2549; bootstrap 2.5/50/97.5 pct -0.3569/0.2472/0.7218; S-B 95% [-0.0118, +0.0451]; point bar S >= 0.839597"
+G2,hp r 192 um closure on the human-label key (informative only if T-B >= 2 x null sd),UNINFORMATIVE,T_K - B_K = +0.1972 - 0.2073 = -0.0101 < 0.0921; 1235 of 2000 resamples T_K - B_K <= 0; S_K +0.1823
+G3,student hp r 192 um (ScrollPrize key) above its rolled-key null max,PASS,+0.4543 vs +0.0284
+G4,forward and depth-shuffled controls inside their nulls (192 um; 48 um with the baseline-relative allowance),FAIL,shuf21 and shuf41 outside at 192 um (+0.0438 vs +0.0296; +0.0453 vs +0.0300); fwd and shuf41 outside at 48 um
+G5,scramble twin nAUC <= base nAUC + 0.02,PASS,twin nAUC 0.0072
+twin valid null,hp r 192 um teacher vs rolled teacher |r| <= 0.10 on both segments,YES,"w00 +0.0022, 552896 -0.0001"
+G6,"blind letter read, prereg-v2 note 4 rule (report-only once G1/G4 failed)",NO-GO,3 of 8 matched (bar 6); 27 calls on 25 phase nulls (cap 24) and 9 on 25 depth nulls; precision 0.15
+verdict,GO needs every gate,NO-GO,G1 and G4 failed; G6 also fails (a) and (b)

@@ -1,0 +1,15 @@
+NOTE 2 to prereg-v2 (sha 49633d68...), written 2026-10-05 16:40:30, before ANY 9 um map of 252405 exists (test/ holds only
+gate1 and the HF v2 label grids) and before the ceiling read below has run.
+1. BATCHING: the 252405 letter read runs at per_batch 1, the only condition calibrated (pa, pb, pc0, pc2 were all
+   1-tile batches). No 2-tile batches on the claim run.
+2. CEILING READ, run FIRST: pc2's recipe (commit e5dff3111) on 252405's OWN ScrollPrize 2.4 um map
+   (render/252405-spmap-grid.npy, from render/src/inkmap.tif), the same tiles, phase nulls per map, FRESH readers
+   who have seen nothing of 252405, scored against reference/letters.json's 8 scorable letters at 0.5 mm from
+   box centres. Let m = letters matched, and record null calls.
+3. THE 9 um BAR, fixed now as a rule of m:
+     if m >= 6: bar stays 6 of 8 (prereg v2).
+     if 3 <= m < 6: bar = ceil(0.7 * m), and the result is labelled CEILING-LIMITED.
+     if m < 3: the 252405 letter read cannot test anything; report "letter read uninformative on 252405" and
+               decide on nAUC and the hp gate alone, as ambiguous at best.
+   Precision >= 0.8 and zero null calls stay as in prereg v2.
+4. LOCATED and LOCATED-BOX are reported for the ceiling read too.

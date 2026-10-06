@@ -1,0 +1,8 @@
+map,role,AUCsup_HFv2,nAUC,AUCall,AUCsup_S3,nAUC_S3,hp192_b2_r,hp192_b2_null_sd,hp192_b2_null_max,hp192_b2_z,hp48_b2_r,hp48_b2_null_max_wrap,hp48_b2_null_max_overlap,hp48_b2_z
+"TAUIL ft6k, rev, five-centre mean",frozen recipe (arm A = arm B),0.8102,0.8409,0.7943,0.8114,0.8383,+0.3499,0.0186,+0.0421,18.8,+0.1280,+0.0114,+0.0115,26.4
+"ink_9um released seed43 step 75k, rev, five-centre mean",baseline (not an arm),0.7640,0.7155,0.7503,0.7647,0.7126,+0.2713,0.0158,+0.0357,17.1,+0.0702,+0.0100,+0.0115,13.9
+"TAUIL ft6k, forward order",control,0.5297,0.0805,0.5888,0.5369,0.0994,+0.0182,0.0187,+0.0392,0.8,+0.0083,+0.0133,+0.0154,1.4
+"TAUIL ft6k, 21-layer depth shuffle",control,0.5308,0.0836,0.5605,0.5298,0.0802,+0.0288,0.0141,+0.0337,1.9,+0.0193,+0.0103,+0.0108,4.3
+"TAUIL ft6k, 41-layer depth shuffle",control,0.5687,0.1863,0.5740,0.5734,0.1977,+0.0268,0.0161,+0.0338,1.8,+0.0107,+0.0069,+0.0071,2.5
+ScrollPrize 2.4 um map (the key; AUCsup = C),reference,0.8689,1.0000,,0.8715,1.0000,+0.9992,,+0.0439,,,,,
+"model-free render, layers 18-22",reference,0.5004,0.0010,0.5281,0.5007,0.0018,+0.0299,0.0099,+0.0217,3.1,+0.0145,+0.0079,+0.0086,3.8

@@ -1,0 +1,9 @@
+NOTE 3 to prereg-v2, written 2026-10-05 16:48:54, before any 9 um map of 252405 exists and before the 252405 ceiling read runs.
+1. NULLS: every 252405 pool (the 2.4 um ceiling read AND the 9 um reads) cuts its phase nulls with --mirror:
+   scramble the 2T x 2T mirror-symmetric extension, crop T x T, same rank remap and IAAFT. Reason (a reviewer): the periodic FFT turns the tile's edge mismatch into axis-aligned streaks (3.5-12.7% of power above
+   20 cycles/tile on the axes vs 0.23% isotropic) that readers named; mirror drops it to 2.9-6.2%. Harder nulls can
+   only lower NET, never raise it. The same recipe for the ceiling and the 9 um reads, so the bar rule of note 2
+   compares like with like.
+2. REFERENCE: letter-read/252405-ref.json (from ref-from-letters.py, sha256 b12f3b24..., 8 scorable letters:
+   L1-2, L1-3, L1-4, L2-3, L2-4, L2-5, L2-6, L2-7; identities redacted), render index coordinates with integer
+   i at the pixel centre, box centres, half-open map boxes made inclusive. To be LOCKED before the ceiling read.

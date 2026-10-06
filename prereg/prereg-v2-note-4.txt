@@ -1,0 +1,21 @@
+NOTE 4 to prereg-v2, written 2026-10-05 19:12:53, AFTER the 252405 ceiling read (2.4 um map) and BEFORE any 9 um letter read or
+9 um pool of 252405 exists.
+Ceiling read (pool pd, mirror nulls, per_batch 1, fresh readers): m = 6 of 8 matched (L1-2, L1-3, L1-4, L2-5,
+L2-6, L2-7, identities redacted; all at 0.02-0.24 mm, none via an alternative), LOCATED 8/8, 16 calls on 9 of 25 null tiles, precision
+0.22, NET -10. So prereg v2's "zero null calls" and "precision >= 0.8" fail on ScrollPrize's own 2.4 um map: with
+nulls readers cannot spot, null calls measure the readers' readiness to see letters in ink-like texture, a
+property of the readers that the 9 um map must be judged AGAINST, not an absolute bar.
+REPLACES prereg v2's "precision >= 0.8 and zero letters called on null tiles" for the 252405 9 um read with:
+  GO (letter read) needs ALL of:
+   (a) matched >= 6 of 8 (note 2, m = 6);
+   (b) null calls <= 24 on the 25 mirror phase nulls (the ceiling's 16 plus 50% for reader-set variation, fixed
+       now, before any 9 um read);
+   (c) precision >= 0.11 (half the ceiling's 0.22), so a spray of calls cannot buy matches.
+  The depth-shuffled null tiles are scored like the phase nulls and reported separately; their calls count in (b)
+  scaled to 25 tiles.
+REPORTED, NOT DECIDING: NET; LOCATED and LOCATED-BOX; and a confidence-floored version at tau = 0.40 (the ceiling's
+highest null-call confidence 0.35, plus 0.05, a rule of the ceiling, not fitted to any 9 um call): matched and
+null calls with confidence >= tau, for the 9 um read and the ceiling side by side.
+The baseline (s43-75k) map is read the same way and reported as a comparison only.
+
+CLARIFICATION of (b), 2026-10-05 19:13:10, before any 9 um reader started: the 24-call cap applies to EACH null type separately: <= 24 calls on the 25 mirror phase nulls AND <= 24 on the 25 depth-shuffled nulls.

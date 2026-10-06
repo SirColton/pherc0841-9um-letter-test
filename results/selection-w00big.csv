@@ -1,0 +1,19 @@
+"map (rev order, five-centre mean)",role,AUCsup_HFv2,hp192_b2_r_vs_ScrollPrize_map,null_max
+ShribyrLabs/vesuvius-reports reader-ft-s42,reference arm only (no stated checkpoint licence),0.9037,+0.389,+0.082
+TAUIL ft6k + mirror TTA,extra row (TTA belongs to R3 only),0.9012,+0.357,+0.119
+TAUIL ft6k,member,0.8915,+0.343,+0.118
+Nieuwlaar ink9um-dense-native + mirror TTA,extra row,0.8873,+0.346,+0.184
+Nieuwlaar ink9um-dense-native,member,0.8826,+0.336,+0.177
+"domenicor046 ink9um-dense (w016excluded, 75k) + mirror TTA",extra row,0.8367,+0.311,+0.182
+"domenicor046 ink9um-dense (w016excluded, 75k)",member,0.8219,+0.301,+0.173
+"ink_9um seed42, uniform soup of 40k/50k/60k/75k",member,0.7857,+0.277,+0.157
+ink_9um seed43 step 50k,diagnostic only,0.7600,+0.249,+0.077
+"ink_9um seed43, uniform soup",member,0.7474,+0.243,+0.113
+ink_9um seed43 step 75k (released),member,0.7372,+0.226,+0.112
+R1: best single member,recipe (SELECTED),0.8915,+0.343,+0.118
+R2: rank-mean of the three community members,recipe,0.8903,+0.309,+0.121
+R3: R2 with mirror TTA,recipe,0.8926,+0.308,+0.129
+R4: R2 plus soup42 and soup43,recipe,0.8642,+0.346,+0.126
+ScrollPrize 2.4 um map,reference,0.9624,+0.999,+0.075
+Hecate 2.4 um map,reference,0.9344,+0.420,+0.103
+model-free render,reference,0.4836,+0.003,+0.074

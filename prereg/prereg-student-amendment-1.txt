@@ -1,0 +1,16 @@
+AMENDMENT 1 to prereg-student.json (sha f3ebf0ab...d3710), written 2026-10-06 02:36:34, before any student or twin training step
+and before any student/twin model has seen 252405.
+1. THE w00big EQUALITY CHECK compares the INTERIOR only: the full w00 render must equal day 1's w00big stack with
+   max |diff| 0 on every pixel at least 5 px inside the w00big frame. Reason: day 1 rendered w00big from a
+   200 x 250-cell crop, so its outer 5 px frame used one-sided normals; the full render's frame is the better one.
+   Measured by the renders part: interior max |diff| 0, all 358,368 differing voxels lie in the 5 px frame
+   (renders/W00BIG-CHECK-NOTE.txt). Training reads the FULL w00 render, not w00big.
+2. DISCLOSURE, from the sceptics (no rule changes): the freeze read day 1's 252405 result numbers (test/result.txt,
+   the letter verdict, exports.json, and ref.json's bytes for a hash) to set the baseline bars, which the bars
+   require; a Grep over geom/l0-1203-render/audit touched 252405's HF label tifs and an ls touched one label-grid
+   header. No 252405 label, map, stack or model output entered training, selection or any design choice: training
+   cells are excluded from 252405 by geometry alone (228 um in 3D, 2096 um flat, asserts logged), and the twin
+   and the student share every setting. The prereg's line saying the freeze read "only its mesh geometry and render
+   crop" is wrong; its state_at_freeze list is the accurate one.
+3. Chunk streaming for the renders (1,123 chunks, 2.36 GB, no file over 1 GB) was with my permission to download
+   what the work needed.

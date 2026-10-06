@@ -1,0 +1,93 @@
+{
+ "name": "day1 use-what-exists, prereg v2 (supersedes gates/prereg.json and AMENDMENT-1.txt where they differ)",
+ "written": "2026-10-05T15:54:35-05:00",
+ "state_at_freeze": {
+  "true": [
+   "252405 native 9.366 um stack rendered (render/252405-stack.npy, 14:12:55); its ScrollPrize 2.4 um map and S3-20260918 label grids built",
+   "w00big selection scores for on-disk members computed (baselines/score-all.txt, 14:21:39) and seen by this author",
+   "Reader A's 252405 letter marks written (reference/letters.json, 15:30:14), blind to every 9 um map",
+   "ScrollPrize 2.4 um map AUCsup on 252405 measured against its labels: 0.8609 (HF v2), 0.8787 (S3 20260918); on w00 0.9542 / 0.9778 (gates/calib-run.txt)"
+  ],
+  "false": [
+   "no 9 um model of any kind has run on the 252405 render (two sceptics checked: no 252405 model map exists)",
+   "no community checkpoint has been scored anywhere",
+   "no recipe has been selected or frozen"
+  ],
+  "correction": "gates/prereg.json's frozen_before list claimed it preceded the 252405 render and the w00big selection scores; it did not. Selection data seen in advance is by design (w00big is the selection frame); the render seen in advance carries no model output."
+ },
+ "inputs_sha256": {
+  "gates/prereg.json": "2d314b1ee767bd52e5b97690877ac9b8e18c535931d2dabe0b46e45dcd99d4cf",
+  "AMENDMENT-1.txt": "330c64bef6d1b73b71467c3e369a77c3770bd00997950bd6045a3d56bc05be0f",
+  "reference/letters.json": "c57dfb124d2e72299122e260290e6ccf35f8e0428bffaf49bb17625aa45717da"
+ },
+ "members": {
+  "on_disk": [
+   "ink_9um seed43 step-075000 (released)",
+   "soup42 (seed42 steps 40k/50k/60k/75k uniform mean)",
+   "soup43 (seed43, same)",
+   "ink_9um seed43 step-050000 (diagnostic only, c0841-9um.py's CKPT)"
+  ],
+  "community_claim_eligible": {
+   "dense_native (Nieuwlaar, MIT)": "d3d95dc41dcb24ed76b84b5e12ca5dae25d7fb34edf1dfbb93e0186f91e6fc6d",
+   "KLAVIS dense w016excluded step75k (domenicor046, MIT per card)": "1d7b99bc641b459736a762b2a1d8c357f61ada4f0117c24c7327b6a1293ba1eb",
+   "TAUIL native0139 ft6k (MIT)": "4a5258085826f4744dbbaff3ec86ea0dd6c565f0d40ca706c7b62e5fbd21ee71"
+  },
+  "reference_arm_only": {
+   "Scheirer ft_s42 step12000 (licence unstated)": "aed5246eeba41a840acb12073f152a41725843a7e6bab378856365c640f08020"
+  },
+  "never_in_a_decision": "Hecate 9.6 (trained where PHerc0841 had both scans)"
+ },
+ "inference": {
+  "order": "rev (geometry: stack stored along the plus normal, as w00big)",
+  "depth_centres_layers": [
+   -4,
+   -2,
+   0,
+   2,
+   4
+  ],
+  "per_member_map": "five-centre mean",
+  "tta": "mirror TTA only in R3"
+ },
+ "recipes": {
+  "R1": "best single claim-eligible-or-on-disk member (five-centre mean)",
+  "R2": "rank-normalised mean of the three MIT community members",
+  "R3": "R2 with mirror TTA",
+  "R4": "R2 plus soup42 and soup43, rank-normalised mean"
+ },
+ "selection_on_w00big_only": {
+  "labels": "HF inklabels_v2 + supervision_mask_v2 on the w00 grid (labels-on-grid.py convention)",
+  "primary": "AUCsup (positives label>=0.75; negatives label<=0 AND supervision>=0.75)",
+  "tie_break": "within 0.01 AUCsup of the best: highest hp r at sigma 192 um, output blur 2 px, against ScrollPrize's 2.4 um map",
+  "frozen_arms": [
+   "the selected recipe",
+   "the best single member by the same rule (guards ensemble letter-softening, edges -19 to -25% in ckpt-ens)"
+  ],
+  "freeze": "recipe JSON written and sha256-hashed BEFORE any of its maps is computed on 252405"
+ },
+ "decisive_on_252405": {
+  "labels": "HF inklabels_v2 + supervision_mask_v2 + validation_mask_v2 carried onto the 252405 render grid by the same convention as w00 (rebuild; the existing grids are S3 20260918, reported beside, never decisive)",
+  "ceiling": "C = AUCsup of ScrollPrize's 2.4 um map on the same labels and pixels (0.8609 HF v2)",
+  "normalised_auc": "nAUC = (AUCsup - 0.5) / (C - 0.5)",
+  "why_normalised": "the plan's 0.85 / 0.80 bars were set against w00, where C = 0.954 (HF v2); on 252405 C = 0.861, so raw 0.85 would demand 97% of the 2.4 um map. The bars carry over as nAUC: 0.85 on w00 = 0.771, 0.80 = 0.661. Fixed now, before any 9 um map of 252405 exists.",
+  "go_to_letter_read": "nAUC >= 0.771 (raw about 0.778) AND hp r at 192 um, blur 2, above the 48-shift rolled-key null max AND forward order and a depth-shuffled stack inside their nulls",
+  "ambiguous": "0.661 <= nAUC < 0.771: read anyway, result marked ambiguous",
+  "exhausted": "nAUC < 0.661: the existing readers have run out; go to the student branch",
+  "report_also": "raw AUCsup (HF v2 and S3), hp r at 48 and 192 um, the released s43-75k baseline on the same pixels"
+ },
+ "sanity_gates_before_scoring": [
+  "gate 1: the model-free direct render (layers 18-22) inside its rolled null by raw r AND by hp r at blur 0 (the hp half was not run in day 1)",
+  "gate 2: released s43-75k local shift scan against the 2.4 um map peaks within 1 px of (0,0)"
+ ],
+ "letter_read": {
+  "reference": "reference/letters.json (Reader A, blind), counted letters only (clear+probable)",
+  "scorable": "only reference letters whose box centre lies inside the 252405 render crop: 8 of the 10",
+  "bar": "ceil(0.7 * 8) = 6 matched letters",
+  "match": "same identity (Reader A's listed alternatives accepted), reader's box centre within 0.5 mm (52 render px at 9.612 um) of Reader A's BOX centre",
+  "also_needed": "precision >= 0.8 and zero letters called on null tiles",
+  "nulls": "per-map phase-scrambled and depth-shuffled tiles; known w00 positives mixed in",
+  "diagnostic_only": "LOCATED: any identity, centre within 0.5 mm, merged per reference letter",
+  "no_552896": "not added: 14,063 of its supervised cells survive the 40-vox rule and all lie within w00's sheet neighbourhood (leak)"
+ },
+ "student_branch": "AMENDMENT-1.txt items 5, 8, 9 (2 mm tiles, item 10), 12, 13 stand: gap closure against the strongest on-disk-or-community recipe at 192 um, point >= 0.5 and bootstrap 2.5th percentile >= 0.25, for hp r and AUCsup each; hp half UNINFORMATIVE if teacher-baseline < 2x null sd on the region."
+}

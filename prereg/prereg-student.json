@@ -1,0 +1,194 @@
+{
+ "name": "twin-scan STUDENT on PHerc0841, prereg (part freeze): fine-tune TAUIL ft6k on native 9.366 um renders of w00 and 552896 against ScrollPrize's 2.4 um map, test once on held-out 252405",
+ "written": "2026-10-06T01:2x-05:00 (clock read 01:19:12 -0500 just before the final edit; the sha256 beside this file is the freeze)",
+ "author": "part freeze of the student branch; machine-written; no git; nothing public",
+ "why": "Day 1 (prereg-v2 + AMENDMENT-1 + notes 1-4) ended NO-GO on the letter read: TAUIL ft6k on the native 9.366 um scan of 252405 scores AUCsup 0.8102 (nAUC 0.8409, C = 0.868948) but blind readers matched 3 of 8 letters against a bar of 6; ScrollPrize's 2.4 um map of the same text gives 6. prereg-v2's student_branch line and design.json's NO-GO lever name the next experiment: one same-scroll distillation, w00 + 552896 (the same text) to 252405 (another winding). villa #1739 allows training on 2 um data of the same scroll provided the model is applied on 9 um; here the 2.4 um data enter only as the teacher map and every input the student ever sees is the native 9.366 um scan.",
+ "state_at_freeze": {
+  "true": [
+   "ScrollPrize's 2.4 um map of 552896 fetched (25,665,160 bytes, freeze/teacher/), and w00's map hashed in place; both pinned below",
+   "freeze/geom/ written by student-freeze-geom.py from mesh GEOMETRY only: the allowed training cells of w00 and 552896, the w00 validation strip, every exclusion distance, and the asserts (all PASS, geom-run.txt)",
+   "of 252405 this part read: the x/y/z of its published 2.403 um mesh (byte-equal to its render's mesh), the crop cells in render/252405-grid.json, the day-1 result files named in inputs_sha256 (result.txt, select-scores.txt, the letter verdict, test/exports.json for hashes), and the bytes of letter-read/252405-ref.json for a hash. No label, mask, map, stack, tile or model output of 252405 was opened or viewed."
+  ],
+  "false": [
+   "no render of w00 (whole) or 552896 exists; no student or scramble checkpoint exists; no training step has run",
+   "no student map of any segment exists, so nothing below was fitted to a student number"
+  ]
+ },
+ "inputs_sha256": {
+  "geom/day1-9um/prereg-v2.json": "49633d68793a4fef5bbe703bfb67d05d6a906b34d16e58166d0c89664dce401c",
+  "geom/day1-9um/AMENDMENT-1.txt": "330c64bef6d1b73b71467c3e369a77c3770bd00997950bd6045a3d56bc05be0f",
+  "geom/day1-9um/prereg-v2-note-1.txt": "f657258091915c27961cebe7db31d9089efeb06742dafc82512bdd7d9e8af69c",
+  "geom/day1-9um/prereg-v2-note-2.txt": "36710c097b26b8314d29decf8627577c13c4c0d3f0031e23f671e44c561e7fc5",
+  "geom/day1-9um/prereg-v2-note-3.txt": "6af727dc352fdf26881135981cf58039f3e5fc14f5d3aec9c23aa90805a96454",
+  "geom/day1-9um/prereg-v2-note-4.txt": "81e5d63a209a1dd56c12485fbb72fd2b0f432446a2c20d6a8cf24c8320f7261b",
+  "geom/day1-9um/test/result.txt": "e3673959997683cea021a2dd6937c74f64e7cc3a6fd797990e9326073f937f63",
+  "geom/day1-9um/test/recipe-frozen.json": "72ad196adb48ce3e356b435f3b087c2b92b95b252186f7e9bbd960f74724e897",
+  "geom/day1-9um/select/select-scores.txt": "d0e6c4430104bf462aa736ee3c8762088fe8b520ff64b1297017f9b8a45d2f10",
+  "geom/day1-9um/letter-read/252405-letter-verdict.json": "21b34684d98ec30903f724cfff2fcda560e5e339b9f6c0016225850ac0aa476e",
+  "geom/day1-9um/letter-read/252405-ref.json": "b12f3b245cb31467f497e5a411905e61df8f9172b5b633e1f9ce57889e9ff4b1",
+  "geom/day1-9um/test/arm-A-R1-tauil_ft6k-rev-mean5.npy (the baseline map, per test/exports.json)": "5312246bcd3e364480c7832817e9f7c9727e93f44b2d91533af0cb1c54c34337",
+  "geom/day1-9um/test/depth-null-tauil_ft6k-shuf21-rev-mean5.npy (per test/exports.json)": "981ea4ba06605184a021236d8c81b69312d07211605c9495dc4f9f2294667357",
+  "geom/day1-9um/select/ckpt/tauil_ft6k.pth (koine payload, the base)": "e3bc6fdfa0c0a32e0a75713ea0e469db14c7305403a4aa1a9b17bff3bf30ef58",
+  "geom/ckpt-community/ink9um_native0139_ft6k.pth (TAUIL v1.0 source, MIT)": "4a5258085826f4744dbbaff3ec86ea0dd6c565f0d40ca706c7b62e5fbd21ee71",
+  "geom/day1-9um/render/w00big-republished/w00big-stack.npy": "8187275cb476c5352339b94819234529cbe683071b74ced1ba722bb280dbcd59",
+  "geom/c0841/mesh0b-render/w00big/hecate-rev.png (Hecate 2.4, the non-deciding check)": "9e503ff580737c14f590af02e86a3fd86f6388c26addc6885b671c5a06426bb2",
+  "reg-pherc0841-affine.json": "56d6dee687b55bbe5915381d8cbae6e92070ce92be20babda8557abc6b5a5f4f",
+  "day1-render-9um.py": "155f35f1ebdbae347f3292077ba1c86e6b3ad3b558825f0a19d657c3a580f5bf",
+  "day1-ink9-maps.py": "bfcb478fe17fcd0a272dc6b1880087225c84162faaaabd18e4a99676983d0bbe",
+  "day1-test-score.py": "ad38544020e5289700b6ac8adc4b81601ea72532e8daa1f32c09ce4cb19eca06",
+  "day1-score-baselines.py": "1faeb063040f574e261c2a78a559404447e3a4f148f4477c592794320a99e867",
+  "day1-test-shuffle41.py": "e1963d7c959a035d7965cf25df072d34efb273a01c1c28623dd9ebc50e3f02d3",
+  "day1-labels-hf.py": "945369b8551884feb51e974a5b6a2837ebc58e169ac769a04fe92af32a24103e",
+  "day1-select-loaders.py": "dad9de51c0c860553cae3231dcd6c8aa57f06f58b997d0ee54e1b2c6c791cd6b",
+  "polite-run.py": "3ec18d3edc72903c5e066293fbdc78f6dc870bada9c68a7954a8d2ce3a67f812",
+  "runfile.py": "d5506bcfe8ad2887f2ffafe849e1f82d57c4efd49be0e23a67b7813ffae31878",
+  "koine/ink-detection/koine_machines/inference/infer.py": "b565fca5f6ef5aaed0add25a1f19212a31a73efb7c5a8a79a837d9ba0a24ce2f",
+  "geom/day1-9um/letter-read/make-pool.py": "af4346b15efc83695b19ed7078958c038f5cbb4f69ea9b2f871619f07b237dec",
+  "geom/day1-9um/letter-read/score.py": "34daa9f3c50c521a8d536da6adb10d2b2b5100b91cf1987448a4543dd686350a",
+  "geom/day1-9um/letter-read/note4-verdict.py": "f4727dc2573830b73a8ec9405703138b8f78db8397b0daa8f7cf1dac1da11237",
+  "day1-letter-read-workflow.js": "bddbcce1de87acb2c1c5afcd6c99a2f2e5e7a8a0d35c9d4197556d6db025c8f5",
+  "student-freeze-geom.py (this part)": "03fa32904fcee07d9c1bd90b17dc096728f0683885647fe7194d81b8d0cdbd4d",
+  "geom/student-9um/freeze/geom/geom-run.txt": "0133cd965d8cc97600feaf8f9491fcb825a8fcf77bda5031c5d5b7e756967c6c",
+  "geom/student-9um/freeze/geom/geom.json": "6350cd021f304a2a9d30f6a17286711d20da2623fd9f0031f611ecfb92e9aa72"
+ },
+ "day1_numbers_this_prereg_rests_on": {
+  "pixels_252405": "render 2125 x 2265 at 9.612 um; scored 4,468,325 px (render mask minus 40 px); pos 279,497; neg(sup) 940,946; hp core 3,487,525 px at 192 um, 4,209,877 at 48 um (test/result.txt)",
+  "teacher_T_ScrollPrize_2p4_map": "AUCsup 0.868948 HF v2 (= C), 0.8715 S3; hp r 192 um b2 against itself (it is the key) +0.9992",
+  "baseline_B_TAUIL_ft6k_rev_mean5": "AUCsup 0.8102, nAUC 0.8409 (0.84077 from 0.8102 and C), AUCall 0.7943, S3 0.8114; hp192 b2 vs SP key +0.3499 (null sd 0.0186, max +0.0421, z 18.8); hp48 b2 +0.1280 (null max +0.0114 wrap / +0.0115 overlap)",
+  "baseline_controls": "fwd 0.5297 / hp192 +0.0182 (max +0.0392) / hp48 +0.0083 (max +0.0133/+0.0154); shuf21 0.5308 / +0.0288 (+0.0337) / +0.0193 (+0.0103/+0.0108); shuf41 0.5687 / +0.0268 (+0.0338) / +0.0107 (+0.0069/+0.0071)",
+  "released_s43_75k_rev_mean5": "AUCsup 0.7640, nAUC 0.7155, hp192 b2 +0.2713 (reported, not the baseline)",
+  "model_free_render": "AUCsup 0.5004, hp192 b2 +0.0299 against null max +0.0217 (gate 1 FAILED on 252405), hp48 b2 +0.0145 (z 3.8); gate 2 FAILED (released s43-75k peak at (+1, +3) px, r 0.5401 vs 0.5387 at (0, 0))",
+  "letter_read": "ceiling (pool pd, 2.4 um map): m = 6 of 8, 16 calls on 9 of 25 phase nulls, precision 0.22, LOCATED 8; TAUIL ft6k (pool pe): matched 3 (L1-2 via a listed alternative, L1-4, L2-6), precision 0.20, null calls phase 4 / depth 1, LOCATED 3, LOCATED-BOX 7, verdict a_matched false -> NO GO; released s43-75k (pool pf): 0",
+  "selection_frame_w00big": "TAUIL ft6k AUCsup 0.8915, hp192 b2 +0.343 (select-scores.txt)"
+ },
+ "1_teacher": {
+  "choice": "ScrollPrize's canonical 2.4 um ink map: model 20260417190342 new_canon_autoresearch_recipe, tile256 stride128, on volume 20260319124803 (2.403 um, 0.22 m, 77 keV), the published map of each segment on its published 2.403 um tifxyz grid (20 canvas px per cell)",
+  "files": {
+   "w00": {"key": "PHerc0841/segments/20260220213127-w00/ink-detection/PHerc0841-20260220213127-2.403um-0.22m-77keV-volume-20260319124803-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+           "local": "geom/day1-9um/gates/s3/20260220213127-w00/ink-detection/<same name> (day 1 fetch; 23,560,428 bytes, equal to the bucket's Content-Length today)",
+           "sha256": "c980b60dc457037d0cfe8c654619c23f3fd673e2847d64aed09cbdb3e26f7bde", "shape": [16460, 18560], "grid": [823, 928]},
+   "552896": {"key": "PHerc0841/segments/20260220214732-auto_grown_20260220144552896/ink-detection/PHerc0841-20260220214732-2.403um-0.22m-77keV-volume-20260319124803-20260417190342-new_canon_autoresearch_recipe-tile256-stride128.tif",
+              "local": "geom/student-9um/freeze/teacher/<same name> (fetched 2026-10-06 00:39 from https://vesuvius-challenge-open-data.s3.amazonaws.com/, 25,665,160 bytes, ETag 4aac51ba4a58e6c10119961b75fbaf50-4)",
+              "sha256": "1c89e92daefbcfe21931f393f1cdc7b488e9a1d1c559e2b59eb2f730d34997aa", "shape": [18080, 18400], "grid": [904, 920]}
+  },
+  "onto_the_native_grid": "BY INDEX, exactly day1-render-9um.py's --canvas rule: render px (i, j) of a crop at cells (r0, c0) = mean of canvas block [20 r0 + 4i, +4) x [20 c0 + 4j, +4), divided by 255, float32. No shift, no rescale, no smoothing, no registration fit. The soft target is that value in [0, 1].",
+  "why_by_index_and_no_shift": "the decisive labels, C and the baseline on 252405 were all carried by index; a shift fitted on the training segments would teach the student an offset the scorer does not apply. Gate 2's (+1, +3) px on 252405 is a property of that render and key, the same for baseline, teacher and student.",
+  "teacher_valid": "a cell whose 20 x 20 teacher block is all zero (the map did not predict there: w00 1,776 cells, 552896 1,875) is never in the loss; built into the allowed masks",
+  "why_ScrollPrize_not_Hecate_2p4": "the teacher must be the same object as the closure's T: AMENDMENT-1 item 5 measures (student - baseline) / (teacher - baseline) with T = ScrollPrize's map on 252405 (C), and C, the key and the letter-read ceiling are all that map. ScrollPrize's map is also published for both training segments on the label grid, so it needs no 2.4 um volume download, no GPU and no registration. Hecate 2.4 (ours) would need a 2.4 um render and an inference pass over all of w00 and 552896 first, its training provenance against PHerc0841 is unrecorded, and on w00big ScrollPrize's map leads it on the human labels (AUCsup 0.9624 vs 0.9344, select-scores.txt).",
+  "Hecate_2p4_non_deciding_check": "reported only, never deciding, never selecting: hp r 192 um blur 2 of base TAUIL, student and scramble twin against Hecate 2.4 rev (geom/c0841/mesh0b-render/w00big/hecate-rev.png, 4 x 4 block mean by index, as day1-render-mapalign.py reads it) on the w00 validation strip, beside the same numbers against ScrollPrize's map. A Hecate 2.4 map of 252405 does not exist and is not made for this test."
+ },
+ "2_training_regions": {
+  "segments": "all papyrus of w00 (20260220213127, grid 823 x 928) and 552896 (auto_grown_20260220144552896, catalog 20260220214732, grid 904 x 920), minus the exclusions below. 552896 carries w00's text (median 81 um apart, label r +0.76 to +0.82, design.json), so it is a second rendering of the same papyrus, not new text.",
+  "masks": {
+   "files_sha256": {
+    "geom/student-9um/freeze/geom/w00-allowed.npy": "5be129299883749a453f1d19031bc2513c7da5667c271a2e02048eedff1d1999",
+    "geom/student-9um/freeze/geom/552896-allowed.npy": "47b7f74f155fe2406b44750e28dafe756d5996fa66a757a08d5773867a95b7b8",
+    "geom/student-9um/freeze/geom/w00-valstrip.npy": "e108112b45f2d8354d1504f9ea03ef71c0b0544825d76ee837e8f85a1d811967",
+    "geom/student-9um/freeze/geom/w00-reason.npy": "bb41ba093ca8e6aa6c09b4fa7ec6b7c35fcd3cb342b0e42bad3e93649daa00c4",
+    "geom/student-9um/freeze/geom/552896-reason.npy": "99c1b6e5c51892b4ce339503b4f43bac919e24f3754caf4d643acbc5a360402d",
+    "the distance arrays (*-dcell3d-um, *-dflat2d-um, *-dval-um)": "hashed in geom.json"
+   },
+   "cell_to_render_px": "render px (i, j) of a crop at cells (r0, c0) belongs to cell (r0 + i // 5, c0 + j // 5): it is canvas block [20 r0 + 4i, +4), mesh row r0 + (4i + 1.5) / 20 (day1-render-9um.py), inside quad row r0 + floor(i / 5); a cell owns the 4 quads around its vertex, so either reading is covered",
+   "reason_bits": "1 no mesh, 2 teacher empty, 4 252405 3D cut, 8 252405 2D cut, 16 validation strip, 32 validation buffer"
+  },
+  "exclusion_252405": {
+   "rule_as_given": "no training patch footprint within 2 mm in 2D or 50 um in 3D of 252405's supervised area",
+   "test_frame_used": "[machine] the whole 252405 render crop (cells rows [42, 468) x cols [210, 664) of its published 2.403 um mesh, 194,241 quads), a superset of the supervised area and of every scored pixel (day 1 scored pos + neg(sup) = 1,220,443 px = 1.13 cm2 inside the crop against 1.11 cm2 supervised in the record), so that no 252405 label or mask file is opened; the cost is training area, stated below",
+   "3D": "an input spans layers 6..34 of the 41-layer render (+-134.4 um along the normal) and trilinear sampling reaches 16.2 um further, so a cell's surface (the 4 quads around its vertex, sampled 5 x 5) must sit >= 50 + 134.4 + 16.2 = 200.6 um from the test-frame surface (sampled 5 x 5 per quad); with 27.3 um sampling slack (edge cap 77.3 um, largest measured 77.23) the cut is 228.0 um",
+   "2D": "a training vertex within 192.2 um (80 vox, the record's co-supervision radius; + 54.7 um vertex-to-vertex slack) of 252405's full mesh is on 252405's sheet and takes its nearest 252405 vertex's flat position; where that vertex is on 252405's mesh boundary and the normal offset is < 300 um, the vertex is read as the sheet's continuation and its flat distance is the boundary's plus its tangential offset. Excluded if the flat distance (48.06 um per cell) to the crop is < 2 mm + 2 cells = 2096 um; the 3 x 3 neighbourhood of an excluded vertex is excluded",
+   "logged_asserts_freeze": {
+    "w00": "min allowed cell distance to the test frame 229.0 um >= 228.0 -> footprint >= 51.0 um from it (rule 50); min flat distance of allowed on-sheet vertices 2100 um (cut 2096); PASS",
+    "552896": "229.0 um -> footprint >= 51.1 um; flat 2108 um; PASS",
+    "for_context": "w00 comes within 28.7 um of the test frame (vertex level) and 552896 within 64.4 um, outside the supervised area (day-1 overlap gate: supervised 252405 >= 198 um from any w00 vertex, >= 282 um from any 552896 vertex); those cells are what the 3D cut removes"
+   },
+   "assert_at_training": "the training part loads the masks, checks the sha256 above, and logs before step 1: the min of *-dcell3d-um over every px of every candidate patch window (must be >= 228.0 um) and the min of *-dflat2d-um over them (must be >= 2096 um or no on-sheet vertex); either failing stops the run. It never opens a 252405 file."
+  },
+  "validation_strip": {
+   "cells": "w00 rows [380, 580) x cols [690, 740): 10,000 cells, 2.40 x 9.61 mm, 0.231 cm2, inside w00big (rows [380, 580) x cols [500, 750)) so Hecate 2.4 exists there; S3 20260918 labels: supervised 55.2%, ink 9.5% of its pixels",
+   "placement": "[machine] chosen among w00big column bands as one with no cell under either 252405 cut (the first draft, cols [600, 650), had 835 cells under them and was moved before any render) and labelled text inside; it sits 2.29 mm (3D) and 2.50 mm (flat) from the test frame",
+   "buffer": "no training cell of either segment within 1.5 mm in 3D (+ 54.7 um vertex slack) of the strip: w00 loses 31,085 cells (0.72 cm2), 552896 31,309 (0.72 cm2), which removes 552896's copy of the strip's text. 3D Euclidean <= along-sheet distance, so the 1.5 mm 2D buffer is contained in it.",
+   "use": "sanity only, scored once per arm on its final weights; never early stopping, never a choice of step, lr, arm or anything else"
+  },
+  "areas": {
+   "w00": "valid 545,772 cells (12.61 cm2); excluded: 3D 3,753, 2D 21,024 (17,271 beyond the 3D cut), teacher-empty 1,776, strip 10,000, strip buffer 31,085; ALLOWED 493,284 cells = 11.39 cm2 (11.33 cm2 inside some patch-feasible window)",
+   "552896": "valid 547,255 cells (12.64 cm2); excluded: 3D 879, 2D 9,750 (8,871 beyond), teacher-empty 1,875, strip buffer 31,309; ALLOWED 504,942 cells = 11.66 cm2 (11.57 cm2 patch-feasible)"
+  },
+  "renders": {
+   "w00": "day1-render-9um.py, unedited (sha256 above), --mesh geom/c0841/mesh-l0/w00 --crop 0 823 0 928 --no-orient (c0841's and w00big's convention: stored along PLUS the normal) --canvas spmap=<w00 teacher> --canvas inklabels=geom/day1-9um/render/labelcheck/w00-20260918/inklabels.zarr/0 --canvas supervision=geom/day1-9um/render/labelcheck/w00-20260918/supervision.zarr/0 --map spmap; 4110 x 4635 px x 41 layers uint8 (the script renders 5 x (cells - 1)). CHECK: on the w00big window (render rows [1900, 2895), cols [2500, 3745)) it must equal geom/day1-9um/render/w00big-republished/w00big-stack.npy (sha256 above) wherever both masks are set, max |diff| 0, or training does not start.",
+   "552896": "same script, --mesh geom/day1-9um/gates/s3/20260220214732-auto_grown_20260220144552896/mesh/20260220214732-on-20260319124803-2.403um.tifxyz --crop 0 904 0 920 --orient-ref geom/c0841/mesh-l0/w00 --orient-ref-crop 380 580 500 750 --canvas spmap=<552896 teacher> --map spmap; 4515 x 4595 px x 41 layers uint8. If the script's two geometric orientation tests disagree or either is ambiguous it stops: then 552896 is DROPPED, the student trains on w00 alone with every other number unchanged, and the report says so.",
+   "gate_1": "each render's model-free gate 1 is reported; it does not stop training (it failed on 252405 too and is the same for every arm)",
+   "downloads_estimate": "[machine] w00big's 1.14 cm2 touched 180 chunks; about 2,000-2,500 chunks of 2 MB for both segments, 714 already cached, so about 3-4 GB of new 9.366 um chunks, none over 1 GB"
+  }
+ },
+ "3_recipe": {
+  "base": "TAUIL ft6k, koine payload geom/day1-9um/select/ckpt/tauil_ft6k.pth (sha256 above): {'model': state_dict, 'config': its training config, 'step'}; built with koine's make_model(config) exactly as day1-select-loaders.py builds it, strict load (0 missing, 0 unexpected, 508 tensors, 68,175,426 parameters). Architecture, normalisation and config unchanged.",
+  "input": "per sample: depth centre c uniform on the integers -4..+4; the 21-layer slab stack[20 + c - 10 : 20 + c + 11], REVERSED (day 1's rev); window offset o uniform on 0..4; layers [o, o + 17) -> 17 x 128 x 128 render px. Spans layers 6..34 at most, the footprint the 3D cut assumes. Normalised per patch with vesuvius.image_proc.intensity.normalization.normalize_robust, exactly as infer.py's tifxyz_robust path does at inference.",
+  "target": "the teacher by index (section 1) on the same 128 x 128 px; loss only on TRAINING PX = render mask AND allowed cell AND the scramble twin's rolled-teacher-valid (section 4), so both arms see identical pixels",
+  "patches": "each step draws 8 windows: a segment with probability proportional to its count of valid window origins, then an origin uniformly among them. A window origin is valid when every px of the window that is inside the render mask is in an allowed cell, and >= 50% of its px are training px.",
+  "loss": "L = BCE + 0.5 x (1 - rho_hp). BCE = BCEWithLogits(logit, teacher) averaged over training px of the batch: soft targets, label smoothing 0 (the base was trained with 0.5), no pos_weight, no Dice. rho_hp = mean over samples with >= 2048 core px of Pearson(hp(sigmoid(logit)), hp(teacher)) over that sample's core, hp(x) = x - G(x m) / max(G(m), 1e-3), G Gaussian sigma 48 um = 4.994 px (truncate 4 sigma, zero outside the patch), m = training px of the sample, core = m AND G(m, 2 sigma) > 0.999 (day1-score-baselines.py's hp, in-patch). No sample qualifies -> the hp term is 0 that step (counted in the log). Losses in fp32.",
+  "optimiser": "[machine] AdamW, peak lr 2e-5 (dense_native's fine-tune lr on this architecture, train_dense_native.json), betas (0.9, 0.999), weight decay 3e-5, 500 linear warmup steps from 0 then cosine to 0 at the last step, global grad-norm clip 1.0, no EMA",
+  "steps": "12,000 optimiser steps at batch 8 = 96,000 windows, about 1,450 cm2 of window area over 23.05 cm2 allowed, i.e. about 63 passes, chosen to match TAUIL ft6k's own exposure (6,000 steps x 64 windows over roughly 100 cm2 of PHerc0139 is about 58 passes; both the batch, the config's 64, and the 100 cm2 for its 13 segments are assumptions)",
+  "precision": "bf16 autocast forward on the RTX 4060 8 GB, fp32 master weights and optimiser state; if batch 8 does not fit, 2 micro-batches of 4 with gradient accumulation (same draws, same steps), noted in the log",
+  "time_estimate": "[machine, unmeasured] day-1 inference ran about 23 windows/s end to end, IO-bound; training forward + backward in memory should take about 0.25-0.9 s per step of 8, so 0.8-3.0 GPU hours per arm (central about 1.7 h) and 1.7-6 h for both arms (central about 3.4 h). If the mean step time over steps 101-300 projects past 6 h for one arm, the run stops and a dated note scales the step count to 4 h for BOTH arms, written before any validation or test number exists. Steps never change for any other reason.",
+  "augmentation": "spatial, applied to input and target together: mirror each in-plane axis with p 0.5; rot90 in plane by 1, 2 or 3 quarter turns with p 0.3 (koine's default for this patch and rotation axis 0). The depth axis is never flipped or permuted (order carries ink: day 1's forward control scores AUCsup 0.53). Intensity, input only, after normalisation: the intensity members of create_training_transforms from the module koine_machines/data/ink_dataset.py imports, called with no_spatial=True (if that module lacks the flag: koine_machines.augmentation.default_augmentations.create_training_transforms(..., no_spatial=True)). No elastic, scale or translation transform: they would move the letter-scale target against the input.",
+  "seed": "20261006 for numpy default_rng (sampling, depth centre, window offset) and torch (augmentation); the SAME seed for the scramble twin, so both arms draw identical windows and augmentations and differ only in targets. Data loading single-process or worker-seeded; cudnn nondeterminism allowed and reported.",
+  "early_stopping": "NONE. The student is the weights after step 12,000, whatever any curve shows. Checkpoints at 3,000, 6,000 and 9,000 are kept for the log and are never scored on 252405. The validation strip's loss is logged every 2,000 steps and chooses nothing.",
+  "output": "freeze-format payload {'model': fp32 state_dict, 'config': the base payload's config unchanged, 'step': 12000}, so infer.py rebuilds it exactly as it rebuilt the base; its sha256 is logged before any 252405 map exists"
+ },
+ "4_scramble_twin": {
+  "recipe": "identical to section 3 (base, seed, draws, steps, lr, loss, augmentation, training px) except the target: each segment's teacher grid on its full render grid is np.roll'd by (+416, +416) render px (4.0 mm per axis, wrap)",
+  "shared_training_px": "V_T = render mask AND teacher-valid cell; training px (both arms) = render mask AND allowed cell AND np.roll(V_T, (416, 416))",
+  "valid_null_check": "before training, hp r at 192 um between each segment's teacher grid and its rolled grid over the training px is logged; if |r| > 0.10 on either segment the twin is not a null, the scramble condition cannot vouch for the student and the verdict cannot be GO (INCONCLUSIVE)",
+  "order": "both arms are trained, and both checkpoints hashed, before any 252405 map of either exists; one GPU job at a time"
+ },
+ "5_evaluation_252405": {
+  "when": "the TEST phase only, after both checkpoints exist; the first time anything of 252405 beyond its mesh geometry is opened",
+  "maps": "day 1's frozen inference unchanged: a copy of day1-ink9-maps.py pointed at the student (and at the twin), on render/252405-stack.npy (array sha1 80e0f696ae14 as render/252405-grid.json records; file sha256 begins 7b044a4d, test/result.txt): rev order; depth centres -4, -2, 0, +2, +4 about layer 20; 21-layer slab; infer.py windows 0-17, 2-19, 4-21 averaged; five-centre mean; no TTA; no rank normalisation; AMP fp16 inference",
+  "controls_student": "forward order; depth-shuffled 21 (each slab permuted by default_rng(0).permutation(21) before the rev flip); depth-shuffled 41 (the stack permuted by default_rng(0).permutation(41) as day1-test-shuffle41.py does). Controls are run on the student only, as day 1 ran them on its arm.",
+  "scoring": "day 1's test scorer on day 1's pixels: HF v2 inklabels + supervision on the 252405 render grid (render mask minus 40 px, midrank AUC, 4,468,325 px; asserted equal); AUCsup (pos label >= 0.75; neg label <= 0 AND supervision >= 0.75); C = 0.868948 recomputed and asserted; nAUC = (AUCsup - 0.5) / (C - 0.5); hp r at 192 um and 48 um, read blurred 0/2/4 px, key = ScrollPrize's map (render/252405-spmap-grid.npy), null = 48 rolled-key shifts (104 px steps to 312 px), wrap AND overlap. The baseline is rescored from its frozen map (sha256 above) and must reproduce AUCsup 0.8102 and hp192 b2 +0.3499 at 4 dp, or scoring stops.",
+  "report_also": "S3 20260918 numbers, AUCall, per-centre AUCsup, blur 0 and 4, the released s43-75k on the same pixels, the scramble twin's full row, the validation-strip sanity table (AUCsup on S3 20260918 w00 labels by index and hp192 b2 vs ScrollPrize and vs Hecate 2.4, for base, student and twin), and both training logs",
+  "label_key_hp": "NEW in this prereg, for G2 only: key K = the HF v2 inklabels grid on the 252405 render; region m_L = scored px AND (supervision >= 0.75 OR label >= 0.75); core_L = m_L AND G(m_L, 2 sigma) > 0.999 at sigma 192 um = 19.975 px; hp as above with m = m_L; read blurred 2 px (masked), key never; Pearson over core_L; null = the same 48 shifts of the hp key, wrap and overlap"
+ },
+ "6_go": {
+  "baseline_B": "TAUIL ft6k rev mean5 on 252405, the strongest existing recipe (AUCsup 0.8102, nAUC 0.8409, hp192 b2 +0.3499)",
+  "teacher_T": "ScrollPrize's 2.4 um map on 252405 (AUCsup = C = 0.868948)",
+  "bootstrap": "AMENDMENT-1 items 9, 10, 12: 2 mm tiles = 208 x 208 render px anchored at render px (0, 0); a tile enters a metric's pool when it holds >= 1 of that metric's scored px (AUC: a pos or a neg; hp: a core px); 2,000 resamples of the pool with replacement, numpy default_rng(0); T, B and S resampled TOGETHER on the same tiles (pixel multiplicities kept); closure = (S - B) / (T - B) per resample, a resample with T - B <= 0 counts as closure -inf",
+  "G1_AUC_closure": "closure on AUCsup: point >= 0.5 AND 2.5th percentile >= 0.25. With B = 0.8102 the point bar is S >= 0.839574 (nAUC >= 0.9204). Always informative here (T - B = 0.0587).",
+  "G2_hp_closure": "[machine] closure on hp r at 192 um, blur 2, with the LABEL key K (section 5): point >= 0.5 AND 2.5th percentile >= 0.25. INFORMATIVE only if T_K - B_K >= 2 x the sd of B's 48 rolled-key nulls on core_L (item 8); otherwise UNINFORMATIVE, the hp half is not tested, and GO rests on G1 plus the read (item 8).",
+  "why_G2_uses_the_label_key": "[machine] on the ScrollPrize key the teacher IS the key, so T's hp r is its self-correlation (+0.9992), and item 5 would demand S >= 0.3499 + 0.5 x (0.9992 - 0.3499) = 0.6746: half-way to a perfect copy of the 2.4 um map from 9 um data, a bar no reader in the record approaches. Item 5 was written for a teacher distinct from the key (Hecate 2.4 vs the SP key, AMENDMENT-1). The human labels are the one key independent of T, B and S, and AUCsup already uses them. The SP-key literal closure is REPORTED (point and bootstrap), never deciding.",
+  "G3_required_like_day1": "student hp192 b2 against the ScrollPrize key above its rolled-null max, wrap AND overlap (prereg-v2's GO line)",
+  "G4_controls": "at 192 um b2: forward, shuffle-21 and shuffle-41 each inside their own nulls (r <= null max, wrap and overlap). At 48 um b2: forward inside its null; shuffle-21 <= max(own null max, 0.0293) and shuffle-41 <= max(own null max, 0.0207), i.e. not more than 0.01 above what the baseline's own shuffles scored (+0.0193, +0.0107). Why this form [machine]: on 252405 the model-free render is already outside its 48 um null (+0.0145, z 3.8) and day 1's shuffles exceeded theirs by similar amounts (result.txt r9), so a plain null bar at 48 um fails every model by construction; what this guard must catch is a student that reads MORE from a depth-destroyed stack than its base, the density shortcut same-scroll distillation invites.",
+  "G5_scramble_flat": "the scramble twin's nAUC <= B's nAUC (as rescored) + 0.02, expected <= 0.8608 (AUCsup <= 0.8176); its hp numbers reported. A twin that gains more is evidence the student's gain is adaptation to the scan, not the teacher's ink, and the verdict is NO-GO.",
+  "G6_letter_read": "prereg-v2 notes 2-4 unchanged: reference letter-read/252405-ref.json (8 scorable letters, sha256 above); match = same identity (Reader A's alternatives accepted) with centre within 0.5 mm of Reader A's box centre; GO needs (a) matched >= 6 of 8 (note 2 with the ceiling's m = 6), (b) <= 24 calls on the 25 mirror phase nulls AND <= 24 on the 25 depth-shuffled nulls (the student's own shuffle-21 map, make-pool.py --depth-map), (c) precision >= 0.11; NET, LOCATED, LOCATED-BOX and the tau 0.40 version reported. Pool built like pe: make-pool.py (sha256 above) with the arguments pe used, the student's map and depth map in place of the arm's, --mirror nulls, per_batch 1, FRESH readers who have seen no tile, map or letter of 252405. Run later as a separate blind read; scored with score.py and note4-verdict.py (sha256 above).",
+  "verdict": {
+   "GO": "G1 AND (G2 pass OR G2 UNINFORMATIVE) AND G3 AND G4 AND G5 AND the twin a valid null AND G6",
+   "NUMBERS GO, LETTER NO-GO": "all but G6: the student reads the test better by the gates and still not legibly; NO-GO for a claim",
+   "NO-GO": "G1 fails, or G2 informative and fails, or G3, G4 or G5 fails; the letter read is still run and reported (item 6 makes it the decider, so it is never skipped) but cannot turn a gate failure into GO",
+   "INCONCLUSIVE": "the twin is not a valid null, or the letter read cannot be run as specified; said, never rounded to GO",
+   "day1_sanity_gates": "gates 1 and 2 failed on 252405 on day 1 and depend only on the render and the key, the same for B, T and S; restated in the report, they do not cap this verdict (the closure is relative to B on the same pixels)"
+  }
+ },
+ "phases_and_hard_rules": {
+  "order": "P1 renders of w00 and 552896 (CPU, network) with the w00big equality check -> P2 training-set build with the mask hash checks, the distance asserts and the twin's null check -> P3 train the student and the twin (either order) -> P4 validation-strip sanity -> P5 TEST on 252405 (maps, controls, twin, scoring, bootstrap, numeric verdict) -> P6 letter read, run separately -> final verdict",
+  "write_only": "under geom/student-9um/<part>/ plus new scripts student-*.py; day-1 scripts are copied, never edited; no git; nothing public",
+  "gpu": "one GPU job at a time, each through polite-run.py, a local load check under 80% (RAM and CPU) before each",
+  "252405": "never opened before P5, by any part; this freeze read only its mesh geometry and render crop (state_at_freeze)",
+  "amendments": "a dated note beside this file, written before the number it would touch exists; this file is never edited after its sha256 is written"
+ },
+ "readings_marked": [
+  "[machine] test frame = the whole 252405 render crop rather than the supervised area: stricter, and opens no 252405 label file",
+  "[machine] '2 mm in 2D' read as along 252405's own sheet (its flattened grid, 48.06 um per cell), with the 80-vox co-supervision radius for 'on its sheet' and a 300 um normal offset for its continuation past its mesh boundary; 3,659 (w00) and 3,339 (552896) boundary-nearest vertices with normal offset 300-600 um inside 2 mm were left in, logged as such",
+  "[machine] footprint = surface +- 134.4 um along the normal + 16.2 um trilinear reach, the layers the recipe can feed",
+  "[machine] validation strip placed at w00 cols [690, 740) inside w00big; first draft moved before any render",
+  "[machine] G2 on the label key, G4's 48 um form, and the twin's (+416, +416) roll on both axes; the literal SP-key closure is reported",
+  "[machine] AdamW 2e-5, 12,000 x 8, warmup 500, seed 20261006; TAUIL's own batch of 64 is the config's, not recorded in its finetune block",
+  "[machine] the step time is an estimate, not measured: no training run has happened on this GPU"
+ ],
+ "what_would_make_it_worthless": [
+  "any 252405 file other than its mesh geometry opened before P5, or any training window with a pixel outside the allowed cells",
+  "the w00 render not reproducing w00big's stack, or a teacher or mask hash differing from this file",
+  "anything chosen on the validation strip or on an intermediate checkpoint",
+  "the scramble twin trained on different windows, seeds or pixels than the student",
+  "a gate or bar changed after a student number exists"
+ ]
+}

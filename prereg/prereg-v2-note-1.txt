@@ -1,0 +1,8 @@
+NOTE 1 to prereg-v2 (sha 49633d68...), written 2026-10-05 16:22:57. Diagnostic only; no decisive rule changes.
+- LOCATED gains a second diagnostic form, LOCATED-BOX: a call counts if its centre lies inside the reference
+  letter's box, any identity, merged per reference letter. Reason (a reviewer, pool pb): four calls naming [letter X] 0.62-0.72 mm
+  from [reference letter Y]'s centre all sit inside Y's 3.1 x 4.0 mm box, so the reader found the ink and misnamed it.
+- The decisive match stays as frozen: same identity, within 0.5 mm of Reader A's BOX centre (not the ink-extent
+  centre). Not widened, because a radius scaled to letter size after a positive control is a rule fitted to the
+  control. Calibration seen: on ScrollPrize's 2.4 um map at w00big the unchanged reader matched 2 of 2 ([letter 1] at
+  0.03 mm, [letter 2] at 0.43 mm) with 0 null calls, so 0.5 mm is reachable at this scale.
