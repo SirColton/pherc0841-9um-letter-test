@@ -17,6 +17,7 @@ Every number below is in [`results/`](results/), and its source is named next to
 - **A pre-registered negative result.** I distilled the 2.4 µm map into a 9 µm student on the same scroll.
   - AUCsup rose to 0.825, but the gain cannot be separated from zero, and the depth-shuffle controls failed.
   - In the student's letter read, readers again named 3 of 8 letters. They also called letters on 17 of 25 phase-scrambled tiles, with the same median confidence as their calls on real tiles.
+- **A second pre-registered student** (section D), penalised for reading depth-shuffled input, reached AUCsup 0.832 on a stricter second-look bar and failed the same two gates: the gain over v1 cannot be separated from zero, and structure from depth-shuffled input persists.
 - **No letters are claimed on any prize-eligible scroll.**
 
 ## What this report claims, and what it does not
@@ -267,14 +268,27 @@ Every number below is in [`results/`](results/), and its source is named next to
 
 This band, against this key, is the student's own training loss, so the gain says little on its own.
 
-## D. Student v2: results pending
+## D. Student v2: a second pre-registered attempt (also NO-GO)
 
-> **Placeholder. Results pending, reported as pre-registered.**
-> A second student recipe was pre-registered after v1's result, and it is training as I write. Its design, the hash of its pre-registration and every gate result will be added here exactly as pre-registered, whatever they show. Nothing in sections A to C will change. The scripts [`code/student2-*.py`](code/) are its harness, still in progress.
->
-> - v2 design summary: pending: the v2 pre-registration is frozen and will be published with its results in an update to this repository
-> - v2 pre-registration sha256: pending (published with the results)
-> - v2 results, gates G1 to G6: pending (training in progress at submission time)
+After v1 failed its depth controls, I pre-registered a second recipe before training it ([`prereg/prereg-student-v2.json`](prereg/prereg-student-v2.json); the frozen original's sha256 is f348e4b89b19af4a682c65dfb672661296f909183ead703237711e547faa33d7, and the published copy differs only by removed local folder prefixes and two wording changes). It is identical to v1 except for one term: every training window is also fed with its 17 depth layers randomly reordered, and the student is penalised (lambda 0.5) for predicting ink on that depth-destroyed copy. The clean data stream was checked to be byte-identical to v1's at every one of the 12,000 steps.
+
+Because v2 was designed after I had seen v1's numbers on the held-out segment, its test is a **second look** at 252405, and the pre-registration made the bar stricter: the baseline is v1, the closure must reach 0.5, and its bootstrap 1.25th percentile (Bonferroni for two looks) must stay at or above 0.25.
+
+| Map on 252405 | AUCsup | hp r 192 um vs the 2.4 um map | hp r 48 um |
+|---|---|---|---|
+| 2.4 um map (teacher) | 0.869 | — | — |
+| student v2 | 0.832 | +0.437 | +0.238 |
+| student v1 | 0.825 | +0.454 | +0.267 |
+| TAUIL ft6k | 0.810 | +0.350 | +0.128 |
+| v2 scramble twin | 0.389 | -0.005 | -0.012 |
+
+- **G1 FAIL:** closure over v1 is 0.146 (bar 0.5); the 1.25th bootstrap percentile is -0.388 (bar 0.25). The v2 minus v1 difference has a 95% interval of [-0.004, +0.018], which cannot be told from zero.
+- **G4 FAIL:** at 192 um both depth-shuffle controls still read structure above their nulls (shuffle-21 +0.046 against a bar of +0.024; shuffle-41 +0.035 against +0.026), and the forward-order control is outside at 48 um. The penalty lowered how much ink v2 predicts on shuffled input (the shuffle-21 map's spread fell from 8.8 to 3.4 grey levels) but not the structure it reads from it, a limit the pre-registration named before training: the penalty acts on magnitude, while the control is a scale-free correlation.
+- **G3 and G5 pass;** G2 was uninformative, fixed before any v2 number.
+- [read] The v2 scramble twin's map is nearly flat but anti-correlated with the labels (AUCsup 0.389). G5 only catches a twin that gains, so it passes; I did not measure the cause.
+- The letter read for v2 was not run before submission. Under the pre-registration it could not have turned a failed numeric gate into a GO.
+
+**What the two students show together:** same-scroll distillation moves pixel AUC up in small steps (0.810, 0.825, 0.832) and sharpens strokes, but neither recipe produced a map whose letters blind readers could name more often, and both learned some structure that does not depend on the depth order of the scan. [read] A 9 um student that reads unseen text legibly probably needs more than a loss term: more paired training text, or surfaces seated closer to the ink layer.
 
 ## E. Registration and render checks (PHerc0841)
 
